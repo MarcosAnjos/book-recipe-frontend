@@ -32,7 +32,7 @@ export default function Cadastro() {
 
     // Enviar os dados
     try {
-      const result = await api.post('/users', data)
+      const result = await api.post('users', data)
       alert(`Seu ID de Acesso: ${result.data.id}`)
     } catch (e) {
       alert('Erro no cadastro, tente novamente')
