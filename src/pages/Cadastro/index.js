@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi'
 
 import api from '../../services/api'
+
 import './styles.css'
 import imgLogo from '../../assets/img_logo.svg'
 
@@ -15,6 +16,7 @@ export default function Cadastro() {
   const [city, setCity] = useState('')
   const [uf, setUf] = useState('')
 
+  const history = useHistory()
 
   async function handleCadastro(e) {
     e.preventDefault()
@@ -34,6 +36,7 @@ export default function Cadastro() {
     try {
       const result = await api.post('users', data)
       alert(`Seu ID de Acesso: ${result.data.id}`)
+      history.push('/')
     } catch (e) {
       alert('Erro no cadastro, tente novamente')
       console.log(e)
